@@ -16,30 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cat = void 0;
-// import { IAnimal } from './IAnimal';
 var Animal_1 = require("./Animal");
 var Cat = /** @class */ (function (_super) {
     __extends(Cat, _super);
-    //   private _name: string;
-    //   private _species: string;
     function Cat(name, species) {
         return _super.call(this, name, species) || this;
     }
-    //   set name(value) {
-    //     this._name = value;
-    //   }
-    //   set species(value) {
-    //     this._species = value;
-    //   }
-    //   get name() {
-    //     return this._name;
-    //   }
-    //   get species() {
-    //     return this._species;
-    //   }
-    //   get type(): string {
-    //     return 'Cat';
-    //   }
     Cat.prototype.makeSound = function () {
         return "Miauw-miauw at the door but once you open it, he/she doesn't go out";
     };

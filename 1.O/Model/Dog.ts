@@ -1,30 +1,9 @@
-import { IAnimal } from './IAnimal';
+import { Animal } from './Animal';
 
-export class Dog implements IAnimal {
-  private _name: string;
-  private _species: string;
-
+export class Dog extends Animal {
   constructor(name: string, species: string) {
-    this.name = name;
-    this.species = species;
+    super(name, species);
   }
-
-  set name(value) {
-    this._name = value;
-  }
-
-  set species(value) {
-    this._species = value;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  get species() {
-    return this._species;
-  }
-
   public makeSound(): string {
     return "Woof-woof, who's a good boy?";
   }

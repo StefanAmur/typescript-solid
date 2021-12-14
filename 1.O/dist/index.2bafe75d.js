@@ -471,18 +471,11 @@ var Zoo_1 = require("./Model/Zoo");
 var zoo = new Zoo_1.Zoo();
 zoo.addAnimal(new Cat_1.Cat('Gru', 'Cat'));
 zoo.addAnimal(new Dog_1.Dog('Max', 'Dog'));
-zoo.addAnimal(new Parrot_1.Parrot());
-zoo.addAnimal(new Fox_1.Fox());
+zoo.addAnimal(new Parrot_1.Parrot('Alfie', 'Parrot'));
+zoo.addAnimal(new Fox_1.Fox('Beautiful Red', 'Fox'));
 zoo.animals.forEach(function(animal) {
-    document.querySelector('#target').innerHTML += animal.name + ': ' + animal.makeSound() + '<br>';
-}); // zoo.animals.forEach((element) => {
- //   console.log(element);
- //   document.querySelector('#target').innerHTML += this.element.name() + '<br>';
- // });
- // zoo.animals.forEach((animal) => {
- //   document.querySelector('#target').innerHTML +=
- //     this.animal.type + ': ' + this.animal.makeSound(animal) + '<br>';
- // });
+    document.querySelector('#target').innerHTML += animal.name + ' the ' + animal.species + ': ' + animal.makeSound() + '<br>';
+});
 
 },{"./Model/Zoo":"kYR3F","./Model/Cat":"darT6","./Model/Dog":"2XX6e","./Model/Parrot":"kDqkQ","./Model/Fox":"icJRE"}],"kYR3F":[function(require,module,exports) {
 "use strict";
@@ -534,30 +527,12 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Cat = void 0;
-// import { IAnimal } from './IAnimal';
 var Animal_1 = require("./Animal");
 var Cat1 = function(_super) {
     __extends(Cat, _super);
-    //   private _name: string;
-    //   private _species: string;
     function Cat(name, species) {
         return _super.call(this, name, species) || this;
     }
-    //   set name(value) {
-    //     this._name = value;
-    //   }
-    //   set species(value) {
-    //     this._species = value;
-    //   }
-    //   get name() {
-    //     return this._name;
-    //   }
-    //   get species() {
-    //     return this._species;
-    //   }
-    //   get type(): string {
-    //     return 'Cat';
-    //   }
     Cat.prototype.makeSound = function() {
         return "Miauw-miauw at the door but once you open it, he/she doesn't go out";
     };
@@ -602,100 +577,121 @@ exports.Animal = Animal1;
 
 },{}],"2XX6e":[function(require,module,exports) {
 "use strict";
+var __extends = this && this.__extends || function() {
+    var extendStatics = function(d1, b1) {
+        extendStatics = Object.setPrototypeOf || ({
+            __proto__: []
+        }) instanceof Array && function(d, b) {
+            d.__proto__ = b;
+        } || function(d, b) {
+            for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        };
+        return extendStatics(d1, b1);
+    };
+    return function(d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Dog = void 0;
-var Dog1 = function() {
+var Animal_1 = require("./Animal");
+var Dog1 = function(_super) {
+    __extends(Dog, _super);
     function Dog(name, species) {
-        this.name = name;
-        this.species = species;
+        return _super.call(this, name, species) || this;
     }
-    Object.defineProperty(Dog.prototype, "name", {
-        get: function() {
-            return this._name;
-        },
-        set: function(value) {
-            this._name = value;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Dog.prototype, "species", {
-        get: function() {
-            return this._species;
-        },
-        set: function(value) {
-            this._species = value;
-        },
-        enumerable: false,
-        configurable: true
-    });
     Dog.prototype.makeSound = function() {
         return "Woof-woof, who's a good boy?";
     };
     return Dog;
-}();
+}(Animal_1.Animal);
 exports.Dog = Dog1;
 
-},{}],"kDqkQ":[function(require,module,exports) {
+},{"./Animal":"5QQop"}],"kDqkQ":[function(require,module,exports) {
 "use strict";
+var __extends = this && this.__extends || function() {
+    var extendStatics = function(d1, b1) {
+        extendStatics = Object.setPrototypeOf || ({
+            __proto__: []
+        }) instanceof Array && function(d, b) {
+            d.__proto__ = b;
+        } || function(d, b) {
+            for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        };
+        return extendStatics(d1, b1);
+    };
+    return function(d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Parrot = void 0;
-var Parrot1 = function() {
-    function Parrot() {
+var Animal_1 = require("./Animal");
+var Parrot1 = function(_super) {
+    __extends(Parrot, _super);
+    function Parrot(name, species) {
+        return _super.call(this, name, species) || this;
     }
-    Object.defineProperty(Parrot.prototype, "name", {
-        get: function() {
-            return this._name;
-        },
-        set: function(value) {
-            this._name = value;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    //   get type() {
-    //     return 'Parrot';
-    //   }
     Parrot.prototype.makeSound = function() {
         return "I'm a pirate, mate";
     };
     return Parrot;
-}();
+}(Animal_1.Animal);
 exports.Parrot = Parrot1;
 
-},{}],"icJRE":[function(require,module,exports) {
+},{"./Animal":"5QQop"}],"icJRE":[function(require,module,exports) {
 "use strict";
+var __extends = this && this.__extends || function() {
+    var extendStatics = function(d1, b1) {
+        extendStatics = Object.setPrototypeOf || ({
+            __proto__: []
+        }) instanceof Array && function(d, b) {
+            d.__proto__ = b;
+        } || function(d, b) {
+            for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        };
+        return extendStatics(d1, b1);
+    };
+    return function(d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Fox = void 0;
-var Fox1 = function() {
-    function Fox() {
+var Animal_1 = require("./Animal");
+var Fox1 = function(_super) {
+    __extends(Fox, _super);
+    function Fox(name, species) {
+        return _super.call(this, name, species) || this;
     }
-    Object.defineProperty(Fox.prototype, "name", {
-        get: function() {
-            return this._name;
-        },
-        set: function(value) {
-            this._name = value;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    //   get type() {
-    //     return 'Fox';
-    //   }
     Fox.prototype.makeSound = function() {
         return 'Raspy bark (according to google)';
     };
     return Fox;
-}();
+}(Animal_1.Animal);
 exports.Fox = Fox1;
 
-},{}]},["566we","fRCHa"], "fRCHa", "parcelRequire94c2")
+},{"./Animal":"5QQop"}]},["566we","fRCHa"], "fRCHa", "parcelRequire94c2")
 
 //# sourceMappingURL=index.2bafe75d.js.map
