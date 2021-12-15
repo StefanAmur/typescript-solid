@@ -20,6 +20,14 @@ class User implements IBasicAuth, IGoogleAuth, IFacebookAuth {
 
   //Interesting detail here: while I did not define a return type or param type, any deviation from the interface will give you an error.
   // Test it out by uncommenting the code below.
+  checkPassword(password: string): boolean {
+    return password === this._password;
+  }
+
+  resetPassword() {
+    this._password = prompt('What is your new password?');
+  }
+
   checkGoogleLogin(token) {
     // return "this will not work";
     return token === this._googleToken;
@@ -35,14 +43,6 @@ class User implements IBasicAuth, IGoogleAuth, IFacebookAuth {
 
   setFacebookToken(token: string) {
     this._facebookToken = token;
-  }
-
-  checkPassword(password: string): boolean {
-    return password === this._password;
-  }
-
-  resetPassword() {
-    this._password = prompt('What is your new password?');
   }
 }
 
@@ -75,7 +75,17 @@ class Admin implements IBasicAuth {
   // }
 }
 
-// class GoogleBot implements UserAuth {}
+class GoogleBot implements IGoogleAuth {
+  private _googleToken: string;
+
+  checkGoogleLogin(token) {
+    return token === this._googleToken;
+  }
+
+  setGoogleToken(token: string) {
+    this._googleToken = token;
+  }
+}
 
 const passwordElement = <HTMLInputElement>document.querySelector('#password');
 const typePasswordElement = <HTMLInputElement>(
@@ -96,6 +106,7 @@ const resetPasswordElement = <HTMLAnchorElement>(
 
 let guest = new User();
 let admin = new Admin();
+let bot = new GoogleBot();
 
 document.querySelector('#login-form').addEventListener('submit', (event) => {
   event.preventDefault();

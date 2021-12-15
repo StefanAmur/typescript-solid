@@ -4,6 +4,12 @@ var User1 = function() {
     }
     //Interesting detail here: while I did not define a return type or param type, any deviation from the interface will give you an error.
     // Test it out by uncommenting the code below.
+    User.prototype.checkPassword = function(password) {
+        return password === this._password;
+    };
+    User.prototype.resetPassword = function() {
+        this._password = prompt('What is your new password?');
+    };
     User.prototype.checkGoogleLogin = function(token) {
         // return "this will not work";
         return token === this._googleToken;
@@ -16,12 +22,6 @@ var User1 = function() {
     };
     User.prototype.setFacebookToken = function(token) {
         this._facebookToken = token;
-    };
-    User.prototype.checkPassword = function(password) {
-        return password === this._password;
-    };
-    User.prototype.resetPassword = function() {
-        this._password = prompt('What is your new password?');
     };
     return User;
 }();
@@ -50,7 +50,18 @@ var Admin1 = function() {
     };
     return Admin;
 }();
-// class GoogleBot implements UserAuth {}
+var GoogleBot1 = function() {
+    function GoogleBot() {
+        this._googleToken = 'google';
+    }
+    GoogleBot.prototype.checkGoogleLogin = function(token) {
+        return token === this._googleToken;
+    };
+    GoogleBot.prototype.setGoogleToken = function(token) {
+        this._googleToken = token;
+    };
+    return GoogleBot;
+}();
 var passwordElement = document.querySelector('#password');
 var typePasswordElement = document.querySelector('#typePassword');
 var typeGoogleElement = document.querySelector('#typeGoogle');
@@ -59,6 +70,7 @@ var loginAsAdminElement = document.querySelector('#loginAsAdmin');
 var resetPasswordElement = document.querySelector('#resetPassword');
 var guest = new User1();
 var admin = new Admin1();
+var bot = new GoogleBot1();
 document.querySelector('#login-form').addEventListener('submit', function(event) {
     event.preventDefault();
     var user = loginAsAdminElement.checked ? admin : guest;
