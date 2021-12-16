@@ -29,7 +29,7 @@ class GasOven implements IOven {
         new Date().getMinutes() +
         ' : THE GAS IS OFF!</p><hr>';
     }, 3000);
-    console.log('THE GAS IS OFF!'); //insert fart humor here
+    console.log('THE GAS IS OFF!');
     this._isOn = false;
   }
 
@@ -55,7 +55,7 @@ class GasOven implements IOven {
           new Date().getMinutes() +
           ' : there is no gas!</p>';
       }, 2000);
-      console.log('there is no gas!'); //insert fart humor here
+      console.log('there is no gas!');
     }
   }
 }

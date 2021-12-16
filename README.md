@@ -2,7 +2,7 @@
 
 Typescript SOLID is an exercise that I had to do during my Becode training consisting of 5️⃣ small, basic code examples, one for each SOLID principle. The code for each exercise had to be refactored in order to not violate the principle that was refereed.
 
-While the code needed refactored, more important was of course understanding the principles.
+While the code needed refactoring, more important was of course understanding the principles at hand.
 
 It was also required to use `Typescript` (which I totally love now) and [Parcel](https://parceljs.org/) to bundle everything up.
 
@@ -27,3 +27,17 @@ If you make any changes to typescript files use the following command to generat
 after that you can use Parcel to bundle everything up:
 
 `npx parcel index.html`
+
+## Folder naming explanation
+
+| Folder name |       Principle targeted        |
+| :---------: | :-----------------------------: |
+|     0.S     | Single Responsibility Principle |
+|     1.O     |      Open/Closed Principle      |
+|     2.L     |  Liskov Substitution Principle  |
+|     3.I     | Interface Segregation Principle |
+|     4.D     | Dependency Inversion principle  |
+
+### Why I left the .dist folder and old.ts/js files
+
+Just so anyone (including me) can quickly see the end results or for a quick look at the differences between the initial code and the refactored one.
