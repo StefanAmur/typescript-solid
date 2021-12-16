@@ -29,18 +29,6 @@ var User = /** @class */ (function () {
 var Admin = /** @class */ (function () {
     function Admin() {
         this._password = 'admin';
-        // checkGoogleLogin(token: string): boolean {
-        //   return false;
-        // }
-        // getFacebookLogin(token: string): boolean {
-        //   return false;
-        // }
-        // setFacebookToken() {
-        //   throw new Error('Function not supported for admins');
-        // }
-        // setGoogleToken() {
-        //   throw new Error('Function not supported for admins');
-        // }
     }
     Admin.prototype.checkPassword = function (password) {
         return password === this._password;
@@ -52,7 +40,6 @@ var Admin = /** @class */ (function () {
 }());
 var GoogleBot = /** @class */ (function () {
     function GoogleBot() {
-        this._googleToken = 'google';
     }
     GoogleBot.prototype.checkGoogleLogin = function (token) {
         return token === this._googleToken;
@@ -68,13 +55,22 @@ var typeGoogleElement = (document.querySelector('#typeGoogle'));
 var typeFacebookElement = (document.querySelector('#typeFacebook'));
 var loginAsAdminElement = (document.querySelector('#loginAsAdmin'));
 var resetPasswordElement = (document.querySelector('#resetPassword'));
+var loginAsBotElement = (document.querySelector('#loginAsBot'));
 var guest = new User();
 var admin = new Admin();
 var bot = new GoogleBot();
 document.querySelector('#login-form').addEventListener('submit', function (event) {
     event.preventDefault();
-    var user = loginAsAdminElement.checked ? admin : guest;
-    if (!loginAsAdminElement.checked) {
+    var user;
+    if (loginAsAdminElement.checked) {
+        user = admin;
+    }
+    else if (loginAsBotElement.checked) {
+        user = bot;
+        user.setGoogleToken('secret_token_google');
+    }
+    else {
+        user = guest;
         user.setGoogleToken('secret_token_google');
         user.setFacebookToken('secret_token_fb');
     }

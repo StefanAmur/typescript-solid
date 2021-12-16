@@ -57,22 +57,6 @@ class Admin implements IBasicAuth {
   resetPassword() {
     this._password = prompt('What is your new password?');
   }
-
-  // checkGoogleLogin(token: string): boolean {
-  //   return false;
-  // }
-
-  // getFacebookLogin(token: string): boolean {
-  //   return false;
-  // }
-
-  // setFacebookToken() {
-  //   throw new Error('Function not supported for admins');
-  // }
-
-  // setGoogleToken() {
-  //   throw new Error('Function not supported for admins');
-  // }
 }
 
 class GoogleBot implements IGoogleAuth {
@@ -104,6 +88,10 @@ const resetPasswordElement = <HTMLAnchorElement>(
   document.querySelector('#resetPassword')
 );
 
+const loginAsBotElement = <HTMLInputElement>(
+  document.querySelector('#loginAsBot')
+);
+
 let guest = new User();
 let admin = new Admin();
 let bot = new GoogleBot();
@@ -111,12 +99,19 @@ let bot = new GoogleBot();
 document.querySelector('#login-form').addEventListener('submit', (event) => {
   event.preventDefault();
 
-  let user = loginAsAdminElement.checked ? admin : guest;
+  let user;
 
-  if (!loginAsAdminElement.checked) {
+  if (loginAsAdminElement.checked) {
+    user = admin;
+  } else if (loginAsBotElement.checked) {
+    user = bot;
+    user.setGoogleToken('secret_token_google');
+  } else {
+    user = guest;
     user.setGoogleToken('secret_token_google');
     user.setFacebookToken('secret_token_fb');
   }
+
   debugger;
 
   let auth = false;

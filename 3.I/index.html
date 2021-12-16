@@ -18,16 +18,21 @@
         <input type="text" id="password" />
 
         <fieldset>
-            <legend>Auth method</legend>
-
-            <label><input type="radio" name="type" value="password" id="typePassword" checked /> Password</label>
-            <label><input type="radio" name="type" value="google" id="typeGoogle" /> Google login</label>
-            <label><input type="radio" name="type" value="facebook" id="typeFacebook" /> Facebook login</label>
+            <legend>Login as ?</legend>
+            <label><input type="radio" name="as-type" value="user" id="loginAsUser" checked="checked" />User</label>
+            <label><input type="radio" name="as-type" value="admin" id="loginAsAdmin" />Admin</label>
+            <label><input type="radio" name="as-type" value="bot" id="loginAsBot" />Google Bot</label>
         </fieldset>
 
-        <label><input type="checkbox" name="admin" id="loginAsAdmin" />Login as admin</label>
+        <br>
 
-        <br />
+        <fieldset>
+            <legend>Auth method</legend>
+            <label><input type="radio" name="auth-type" value="password" id="typePassword" checked /> Password</label>
+            <label><input type="radio" name="auth-type" value="google" id="typeGoogle" /> Google login</label>
+            <label><input type="radio" name="auth-type" value="facebook" id="typeFacebook" /> Facebook login</label>
+        </fieldset>
+        <br>
         <input type="submit" value="Login" />
     </form>
 
