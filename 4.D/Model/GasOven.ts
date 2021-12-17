@@ -12,7 +12,7 @@ export class GasOven implements IOven {
         new Date().getMinutes() +
         ' : THE GAS IS ON!</p>';
     }, 1000);
-    console.log('THE GAS IS ON!'); //insert fart humor here
+    console.log('THE GAS IS ON!');
     this._isOn = true;
   }
 
