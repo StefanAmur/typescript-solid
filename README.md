@@ -38,6 +38,11 @@ after that you can use Parcel to bundle everything up:
 |     3.I     | Interface Segregation Principle |
 |     4.D     | Dependency Inversion principle  |
 
-### Why I left the .dist folder and old.ts/js files
+### Why I left the .dist folder and old.ts/js files?
 
 Just so anyone (including me) can quickly see the end results or for a quick look at the differences between the initial code and the refactored one.
+
+### Captain's log end of the week and the exercise
+
+It has been a productive week, filled with new gained knowledge and a better understanding of OOP. And this was the first time using Typescript which is an amazing language and takes Javascript to a whole new different level.  
+There's still a lot to read and learn about OOP, SOLID and well... everything, but that's the fun in programming, you can always learn something new and never get bored.
